@@ -20,8 +20,8 @@ end
 
 post '/tags/add_tag/:post_id' do
   @post = Post.find_by_id(params[:post_id])
-  @tag = Tag.find_or_create_by_name(params[:name])
-  if @tag.save
+  @tag = Tag.find_or_create_by_name(params[:post][:name])
+  if @tag.save && !@post.tags.include?(@tag)
     @post.tags << @tag
     redirect "/posts/#{@post.id}"
   else

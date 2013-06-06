@@ -7,7 +7,7 @@
         
      <input type="submit" value="Create your own tag"><p>Or use one of these!</p><br>
      <%@tags.each do |tag|%>
-     <input type="submit" name="name" value="<%=tag.name%>">
+     <input type="submit" name="post[name]" value="<%=tag.name%>">
      <%end%>
     </form>
 
