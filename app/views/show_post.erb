@@ -6,15 +6,16 @@
   <h3>Tags</h3>
   <%@post.tags.each do |tag|%>
   
-  <p><%=tag.name%> <a href="/tags/<%=tag.id%>">Check out other blogs with this tag!</a></p>
+  <p><a href="/tags/<%=tag.id%>"><%=tag.name%></a></p>
+  <%end%>
   <form action="/edit/<%=@post.id%>" method="get">
     <input type="submit" value="Edit this post!">
   </form>
-  <form action="/add_tag/<%=@post.id%>" method="get">
+  <form action="/tags/add_tag/<%=@post.id%>" method="get">
     <input type="submit" value="Tag this post!">
   </form>
   <form action="/posts/delete/<%=@post.id%>" method="get">
     <input type="submit" value="Delete this post!">
   </form>
-  <%end%>
+  
 </div>

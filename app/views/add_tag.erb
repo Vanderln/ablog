@@ -1,11 +1,17 @@
 <div class="add_tag">
   <h1>Add a tag for <%=@post.title%> Blog</h1>
+  <h4>Create a tag below or use one that is already made!</h4>
   <form action="/tags/add_tag/<%=@post.id%>" method="post">
     <ul>
      <p>Tag: <input type="text" name="post[name]" placeholder="Your tag here!" autofocus></p>
-    
-     <input type="submit" value="Tag this post!">
+        
+     <input type="submit" value="Create your own tag"><p>Or use one of these!</p><br>
+     <%@tags.each do |tag|%>
+     <input type="submit" name="name" value="<%=tag.name%>">
+     <%end%>
     </form>
+
+
     <%if @tag%>
     <%if @tag.errors%>
     <%@tag.errors.each do |key, error|%>

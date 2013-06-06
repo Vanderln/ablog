@@ -1,3 +1,12 @@
+get '/tags/add_tag/:post_id' do
+  
+  @post = Post.find_by_id(params[:post_id])
+  @tags = Tag.all
+  p @tags.inspect
+  erb :add_tag
+end
+
+
 get '/tags/:tag_id' do
   @tag = Tag.find_by_id(params[:tag_id])
   erb :show_tagged
@@ -8,17 +17,13 @@ get '/tag/:tag_name' do
   erb :show_tagged
 end
 
-get '/tags/add_tag/:post_id' do
-  @post = Post.find_by_id(params[:post_id])
-  erb :add_tag
-end
 
 post '/tags/add_tag/:post_id' do
   @post = Post.find_by_id(params[:post_id])
-  @tag = Tag.new(params[:post])
+  @tag = Tag.find_or_create_by_name(params[:name])
   if @tag.save
     @post.tags << @tag
-    erb :show_post
+    redirect "/posts/#{@post.id}"
   else
     erb :add_tag
   end
