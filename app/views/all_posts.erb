@@ -1,0 +1,20 @@
+
+  <h3>Here are our blogs</h3>
+  <div class="blog_post">
+  <%@posts.each do |post|%>
+
+  
+   <p>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a></p><br>
+   <p>Content: <br><br><%=post.content%></p><br>
+   <p>Author: <br><br><%=post.author%></p>
+   <h5>Tags</h5>
+   <%post.tags.each do |tag|%>
+   <ul> 
+   <li> <a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
+   </ul>
+   
+   
+   <%end%>
+   <%end%>
+
+  </div>

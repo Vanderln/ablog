@@ -1,0 +1,16 @@
+<div class="add_tag">
+  <h1>Add a tag for <%=@post.title%> Blog</h1>
+  <form action="/tags/add_tag/<%=@post.id%>" method="post">
+    <ul>
+     <p>Tag: <input type="text" name="post[name]" placeholder="Your tag here!" autofocus></p>
+    
+     <input type="submit" value="Tag this post!">
+    </form>
+    <%if @tag%>
+    <%if @tag.errors%>
+    <%@tag.errors.each do |key, error|%>
+    <p><%=error%></p>
+      <%end%>
+      <%end%>
+      <%end%>
+</div>

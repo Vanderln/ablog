@@ -1,0 +1,16 @@
+<div class="create">
+  <form action="/create" method="post">
+    <ul>
+     <p>Author: <input type="text" name="post[author]" placeholder="Your name here!" autofocus></p>
+     <p>Title: <input type="text" name="post[title]" placeholder="Title goes here!"></p>
+     <p>Content: <textarea cols="50" rows="35" name="post[content]" placeholder="Blog Away!"></textarea></p>
+     <input type="submit" value="Create Blog!">
+    </form>
+    <%if @post%>
+    <%if @post.errors%>
+    <%@post.errors.each do |key, error|%>
+    <p><%=error%></p>
+      <%end%>
+      <%end%>
+      <%end%>
+</div>

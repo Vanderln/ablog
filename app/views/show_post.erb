@@ -1,0 +1,20 @@
+<div>
+  <h2>Title: <%=@post.title%></h2>
+  <h3>Author: <%=@post.author%></h3>
+  <p>Content: <%=@post.content%></p>
+  <br>
+  <h3>Tags</h3>
+  <%@post.tags.each do |tag|%>
+  
+  <p><%=tag.name%> <a href="/tags/<%=tag.id%>">Check out other blogs with this tag!</a></p>
+  <form action="/edit/<%=@post.id%>" method="get">
+    <input type="submit" value="Edit this post!">
+  </form>
+  <form action="/add_tag/<%=@post.id%>" method="get">
+    <input type="submit" value="Tag this post!">
+  </form>
+  <form action="/posts/delete/<%=@post.id%>" method="get">
+    <input type="submit" value="Delete this post!">
+  </form>
+  <%end%>
+</div>
