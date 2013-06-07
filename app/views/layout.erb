@@ -15,11 +15,26 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
   <div class="nav_bar">
-    <h1>Stream of Consciousness</h1>
-    <h3>Where you can share your every thought....</h3>
-    <p><a href="/">Homepage!</a></p>
-    <p><a href="/create">Create a Blog!</a></p>
-    <p><a href="/all_posts">Blogs Main</a></p>
+    <p>Stream of Consciousness</p>
+    <p>Where you can share your every thought....</p>
+    </div>
+    <div class="nav_links">
+    <ul>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/create_account">Create an Account</a></li>
+    <li><a href="/all_posts">Blogs List</a></li>
+    <li><a href="/bloggers">Our Bloggers</a></li>
+    </ul>
+    <%if logged_in?%>
+    <ul>
+    
+    <li><a href="/create">Create a Blog!</a></li>
+    <li><a href="/users/user_page">Go to your user page!</a></li>
+    <li><a href="/logout">Logout</a></li>
+    <li>You are logged in as <%=@current_user.name%></li>
+    </ul>
+    <%end%>
+  
   </div>
   <title></title>
 </head>

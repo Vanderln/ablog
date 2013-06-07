@@ -1,10 +1,13 @@
+
 <div class="edit_post">
+  <%if current_user.id == @post.user_id%>
   <form action="/after_edit/<%=@post.id%>" method="post">
     <ul>
-     <p>Author: <input type="text" name="post[author]" value="<%=@post.author%>" autofocus></p>
-     <p>Title: <input type="text" name="post[title]" value="<%=@post.title%>"></p>
+     
+     <p>Title: <input type="text" name="post[title]" value="<%=@post.title%>" autofocus></p>
      <p>Content: <textarea cols="50" rows="35" name="post[content]" ><%=@post.content%></textarea></p>
      <input type="submit" value="Edit Blog!">
+     <input type="hidden" name="post[user_id]" value="<%@post.user_id%>">
     </form>
     <%if @post%>
     <%if @post.errors%>
@@ -13,4 +16,8 @@
       <%end%>
       <%end%>
       <%end%>
+<%else%>
+<h1> Access denied!</h1>
+<p><a href="/">Homepage</a></p>
+<%end%>
 </div>

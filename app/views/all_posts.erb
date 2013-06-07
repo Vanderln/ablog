@@ -6,7 +6,7 @@
   
    <p>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a></p><br>
    <p>Content: <br><br><%=post.content%></p><br>
-   <p>Author: <br><br><%=post.author%></p>
+   <p>Author: <br><br><a href="/users/<%=post.user.id%>"><%=post.user.name%></a></p>
    <h5>Tags</h5>
    <%post.tags.each do |tag|%>
    <ul> 

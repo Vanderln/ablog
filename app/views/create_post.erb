@@ -1,9 +1,10 @@
+<%if logged_in?%>
 <div class="create">
   <form action="/create" method="post">
     <ul>
-     <p>Author: <input type="text" name="post[author]" placeholder="Your name here!" autofocus></p>
      <p>Title: <input type="text" name="post[title]" placeholder="Title goes here!"></p>
      <p>Content: <textarea cols="50" rows="35" name="post[content]" placeholder="Blog Away!"></textarea></p>
+     <input type="hidden" name="post[user_id]" value="<%=current_user.id%>">
      <input type="submit" value="Create Blog!">
     </form>
     <%if @post%>
@@ -14,3 +15,7 @@
       <%end%>
       <%end%>
 </div>
+<%else%>
+<h1> Access denied!</h1>
+<p><a href="/">Homepage</a></p>
+<%end%>

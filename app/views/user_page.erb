@@ -1,0 +1,27 @@
+<% if logged_in? %>
+<h1>Welcome to <%=current_user.name%>'s Personal Page</h1>
+
+<div class="container">
+  <div class="blogger">
+  <%if current_user.posts.count > 0 %>
+  <%current_user.posts.each do |post|%>
+  <ul>
+    <li>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a></li>
+    <li>Content: <%=post.content%></li>
+  </ul>
+  <%post.tags.each do |tag|%>
+  <ul>
+    <p><a href="/tags/<%=tag.id%>"><%=tag.name%> (Tag)</a></p>
+  </ul>
+  <%end%>
+  <%end%>
+  <%else%>
+  <h3>You do not have any Blog posts yet!</h3>
+  <p><a href='/create'>Create one here!</a></p> 
+  <%end%>
+</div>
+</div>
+<%else%>
+<h1> Access denied!</h1>
+<p><a href="/">Homepage</a></p>
+<%end%>

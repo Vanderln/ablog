@@ -1,6 +1,6 @@
 <div>
   <h2>Title: <%=@post.title%></h2>
-  <h3>Author: <%=@post.author%></h3>
+  <h3>Author: <%=@post.user.name%></h3>
   <p>Content: <%=@post.content%></p>
   <br>
   <h3>Tags</h3>
@@ -8,14 +8,17 @@
   
   <p><a href="/tags/<%=tag.id%>"><%=tag.name%></a></p>
   <%end%>
+  <%if logged_in?%>
+  <%if current_user.id == @post.user_id%>
   <form action="/edit/<%=@post.id%>" method="get">
     <input type="submit" value="Edit this post!">
-  </form>
-  <form action="/tags/add_tag/<%=@post.id%>" method="get">
-    <input type="submit" value="Tag this post!">
   </form>
   <form action="/posts/delete/<%=@post.id%>" method="get">
     <input type="submit" value="Delete this post!">
   </form>
-  
+  <%end%>
+  <form action="/tags/add_tag/<%=@post.id%>" method="get">
+    <input type="submit" value="Tag this post!">
+  </form>
+  <%end%>
 </div>
