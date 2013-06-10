@@ -32,7 +32,7 @@ post '/posts/delete/:post_id' do
   if params[:delete]
     @post.destroy
     @posts = Post.all
-    erb :all_posts
+    redirect '/all_posts'
   else
     erb :show_post
   end
@@ -41,18 +41,17 @@ end
 post '/create' do
   @post = Post.new(params[:post])
   if @post.save
-    erb :show_post
+    redirect "/posts/#{@post.id}"
   else
     erb :create_post
   end
 end
 
 post '/after_edit/:post_id' do
-  p params.inspect
   @post = Post.find_by_id(params[:post_id])
   @post.update_attributes(params[:post])
   if @post.save
-    erb :show_post
+    redirect "/posts/#{@post.id}"
   else
     erb :create_post
   end

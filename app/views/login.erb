@@ -1,18 +1,28 @@
 <div class="container">
-<div class="create_account">
-  <form action="/login" method="post">
-    <ul>
-     
-     <p>Email: <input type="text" name="post[email]" placeholder="Email goes here!" autofocus></p>
-     <p>Password: <input type="password" name="post[password]" placeholder="password"></p>
-     <input type="submit" value="Login!">
-    </form>
-    <%if @user%>
-    <%if @user.errors%>
-    <%@user.errors.each do |key, error|%>
-    <p><%=error%></p>
-      <%end%>
-      <%end%>
-      <%end%>
+  <div class="create_account">
+    <form id="login" action="/login" method="post">
+     <table>
+       <tr>
+        <td>Email:</td>
+        <td><input type="text" name="post[email]" placeholder="Email goes here!" autofocus></td>
+      </tr>
+      <tr>
+        <td>Password:</td> 
+        <td><input type="password" name="post[password]" placeholder="password"></td>>
+      </tr>
+      <tr>
+       <td><input type="submit" value="Login!"></td>
+     </tr>
+   </table>
+ </form>
+
+ <%if @user%>
+ <%if @user.errors%>
+ <%@user.errors.each do |key, error|%>
+ <p><%=error%></p>
+ <%end%>
+ <%end%>
+ <%end%>
 </div>
 </div>
+

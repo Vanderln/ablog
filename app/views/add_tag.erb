@@ -5,9 +5,9 @@
     <ul>
      <p>Tag: <input type="text" name="post[name]" placeholder="Your tag here!" autofocus></p>
         
-     <input type="submit" value="Create your own tag"><p>Or use one of these!</p><br>
+     <input class="dir_button" type="submit" value="Create your own tag"><p>Or use one of these!</p><br>
      <%@tags.each do |tag|%>
-     <input type="submit" name="post[name]" value="<%=tag.name%>">
+     <input class="button_choice" type="submit" name="post[name]" value="<%=tag.name%>">
      <%end%>
     </form>
 

@@ -1,23 +1,28 @@
+
 <% if logged_in? %>
 <h1>Welcome to <%=current_user.name%>'s Personal Page</h1>
-
-<div class="container">
   <div class="blogger">
   <%if current_user.posts.count > 0 %>
   <%current_user.posts.each do |post|%>
-  <ul>
-    <li>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a></li>
-    <li>Content: <%=post.content%></li>
-  </ul>
+  
+    <p>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a><br><br></p>
+
+    <p>Content: <span class="content"><%=post.content%></span></p>
+ 
+  <p>Tags:<p>
+
   <%post.tags.each do |tag|%>
-  <ul>
-    <p><a href="/tags/<%=tag.id%>"><%=tag.name%> (Tag)</a></p>
-  </ul>
+    <form class="button_form" action="/tags/<%=tag.id%>" method="get"> 
+    <input class="button" type="submit" value="<%=tag.name%>">
+   </form>
   <%end%>
   <%end%>
   <%else%>
   <h3>You do not have any Blog posts yet!</h3>
-  <p><a href='/create'>Create one here!</a></p> 
+  <form class="button_form" action='/create' method="get"> 
+    <input class="button" type="submit" value="Create one here!">
+   </form>
+  
   <%end%>
 </div>
 </div>
@@ -25,3 +30,4 @@
 <h1> Access denied!</h1>
 <p><a href="/">Homepage</a></p>
 <%end%>
+

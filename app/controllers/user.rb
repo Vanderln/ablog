@@ -24,10 +24,10 @@ post '/create_user' do
   @user = User.new(params[:post])
   if @user.save
     session[:user_id] = @user.id
-    erb :user_page
+    redirect "/users/#{@user.id}"
+
   else
-    "Hi"
-    redirect '/create_account'
+    erb :create_account
   end
 end
 
@@ -35,9 +35,9 @@ post '/login' do
   @user = User.find_by_email(params[:post][:email])
   if @user
     session[:user_id] = @user.id
-    erb :user_page
+    redirect "/users/user_page"
   else
-    redirect '/login'
+    erb :user_page
   end
 end
 

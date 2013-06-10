@@ -4,14 +4,15 @@
   <%@posts.each do |post|%>
 
   
-   <p>Title: <a href="/posts/<%=post.id%>"><%=post.title%></a></p><br>
-   <p>Content: <br><br><%=post.content%></p><br>
+   <p>Title: <span class="title"><a href="/posts/<%=post.id%>"><%=post.title%></a></span></p><br>
+   <p>Content: <br><br><span class="content"><%=post.content%></span></p><br>
    <p>Author: <br><br><a href="/users/<%=post.user.id%>"><%=post.user.name%></a></p>
    <h5>Tags</h5>
    <%post.tags.each do |tag|%>
-   <ul> 
-   <li> <a href="/tags/<%=tag.id%>"><%=tag.name%></a></li>
-   </ul>
+   <p>Tags:<p>
+   <form action="/tags/<%=tag.id%>" method="get"> 
+    <input class="button" type="submit" value="<%=tag.name%>">
+   </form>
    
    
    <%end%>
